@@ -1,11 +1,13 @@
 package com.kurdestan.fooparking.pricerate;
 
 import com.kurdestan.fooparking.common.BaseEntity;
+import com.kurdestan.fooparking.parking.Parking;
 import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_price_rate")
@@ -25,4 +27,7 @@ public class PriceRate extends BaseEntity {
     @NotNull
     @Column(name = "daily_rate")
     private Double dailyRate;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parking", cascade = CascadeType.ALL)
+    private List<Parking> parkings;
 }
