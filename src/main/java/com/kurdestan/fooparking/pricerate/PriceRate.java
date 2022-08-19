@@ -28,6 +28,6 @@ public class PriceRate extends BaseEntity {
     @Column(name = "daily_rate")
     private Double dailyRate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parking", cascade = CascadeType.ALL)
-    private List<Parking> parkings;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "priceRate", cascade = CascadeType.ALL)
+    private List<Parking> parkingList;
 }

@@ -1,5 +1,6 @@
 package com.kurdestan.fooparking.parking;
 
+import com.kurdestan.fooparking.vehicle.Vehicle;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -14,7 +15,7 @@ public interface ParkingRepository extends
         PagingAndSortingRepository<Parking, Long>,
         JpaSpecificationExecutor<Parking> {
 
-    List<Parking> findByPlate(String plate);
+    List<Parking> findByVehicle(Vehicle vehicle);
 
     Page<Parking> findAll(Pageable pageable);
 

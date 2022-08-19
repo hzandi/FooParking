@@ -4,15 +4,19 @@ import com.kurdestan.fooparking.common.BaseEntity;
 import com.kurdestan.fooparking.pricerate.PriceRate;
 import com.kurdestan.fooparking.vehicle.Vehicle;
 import lombok.Data;
+import org.hibernate.envers.Audited;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+
 @Entity
 @Table(name = "tbl_parking")
 @Data
+@Audited
 public class Parking extends BaseEntity {
 
     @NotNull
@@ -32,6 +36,7 @@ public class Parking extends BaseEntity {
 
     @NotNull
     @ManyToOne
+    @Audited(targetAuditMode = NOT_AUDITED)
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 

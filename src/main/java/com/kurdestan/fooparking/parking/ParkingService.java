@@ -2,6 +2,8 @@ package com.kurdestan.fooparking.parking;
 
 import com.kurdestan.fooparking.common.SearchCriteria;
 import com.kurdestan.fooparking.common.exception.NotFoundException;
+import com.kurdestan.fooparking.vehicle.Vehicle;
+import com.kurdestan.fooparking.vehicle.VehicleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class ParkingService implements IParkingService {
 
     private final ParkingRepository repository;
+    private final VehicleRepository vehicleRepository;
 
     @Override
     public Parking save(Parking parking) {
@@ -62,7 +65,8 @@ public class ParkingService implements IParkingService {
 
     @Override
     public List<Parking> getByPlate(String plate) {
-        return repository.findByPlate(plate);
+        Vehicle vehicle = vehicleRepository.findByPlate(plate);
+        return repository.findByVehicle(vehicle);
     }
 
     @Override

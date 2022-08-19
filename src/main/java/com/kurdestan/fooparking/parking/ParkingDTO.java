@@ -10,10 +10,10 @@ import lombok.Data;
 public class ParkingDTO extends BaseDTO {
 
     @ApiModelProperty(required = true, hidden = false)
-    private Long entranceDateTime;
+    private Long entranceDatetime;
 
     @ApiModelProperty(required = true, hidden = false)
-    private Long exitDateTime;
+    private Long exitDatetime;
 
     @ApiModelProperty(required = true, hidden = false)
     private Double fee;

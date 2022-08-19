@@ -25,6 +25,6 @@ public class Vehicle extends BaseEntity {
     @Column(name = "plate")
     private String plate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parking", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicle", cascade = CascadeType.ALL)
     private List<Parking> parkings;
 }

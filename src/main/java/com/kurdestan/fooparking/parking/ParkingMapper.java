@@ -12,15 +12,15 @@ import java.util.List;
 public interface ParkingMapper {
 
     @Mappings({
-            @Mapping(source = "entranceDateTime",target ="entranceDateTime", ignore = false, qualifiedByName = "parkingTimestampToDate"),
-            @Mapping(source = "exitDateTime",target ="exitDateTime", ignore = false, qualifiedByName = "parkingTimestampToDate")
+            @Mapping(source = "entranceDatetime",target ="entranceDatetime", ignore = false, qualifiedByName = "parkingTimestampToDate"),
+            @Mapping(source = "exitDatetime",target ="exitDatetime", ignore = false, qualifiedByName = "parkingTimestampToDate")
     })
     Parking toParking(ParkingDTO parkingDTO);
 
 
     @Mappings({
-            @Mapping(source = "entranceDateTime",target ="entranceDateTime", ignore = false, qualifiedByName = "parkingDateToTimestamp"),
-            @Mapping(source = "exitDateTime",target ="exitDateTime", ignore = false, qualifiedByName = "parkingDateToTimestamp"),
+            @Mapping(source = "entranceDatetime",target ="entranceDatetime", ignore = false, qualifiedByName = "parkingDateToTimestamp"),
+            @Mapping(source = "exitDatetime",target ="exitDatetime", ignore = false, qualifiedByName = "parkingDateToTimestamp"),
     })
     ParkingDTO toParkingDTO(Parking parking);
 

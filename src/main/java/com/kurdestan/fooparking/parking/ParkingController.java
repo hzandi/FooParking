@@ -2,7 +2,6 @@ package com.kurdestan.fooparking.parking;
 
 import com.kurdestan.fooparking.common.PagingData;
 import com.kurdestan.fooparking.common.SearchCriteria;
-import com.kurdestan.fooparking.vehicle.*;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -49,7 +48,7 @@ public class ParkingController {
     }
 
     @GetMapping("/v1/filter-plate/{plate}")
-    public ResponseEntity<List<ParkingDTO>> filterByType(@PathVariable String plate) {
+    public ResponseEntity<List<ParkingDTO>> filterByPlate(@PathVariable String plate) {
         List<Parking> parkingList = service.getByPlate(plate);
         List<ParkingDTO> parkingDTOS = mapper.toParkingDTOList(parkingList);
         return ResponseEntity.ok(parkingDTOS);
@@ -63,7 +62,7 @@ public class ParkingController {
     }
 
     @GetMapping("/v1/paging/{page}/{size}")
-    public ResponseEntity<PagingData<ParkingDTO>> findAll(@PathVariable Integer page, Integer size) {
+    public ResponseEntity<PagingData<ParkingDTO>> findAll(@PathVariable Integer page, @PathVariable Integer size) {
 
         Page<Parking> parkingPage = service.paging(page, size);
 
