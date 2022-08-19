@@ -1,5 +1,6 @@
 package com.kurdestan.fooparking.parking;
 
+import com.kurdestan.fooparking.bill.Bill;
 import com.kurdestan.fooparking.common.SearchCriteria;
 import org.springframework.data.domain.Page;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 public interface IParkingService {
 
+    Parking exitRequest(String plate, Long exitDatetime);
     Parking save(Parking parking);
     Parking update(Parking parking);
     void delete(Parking parking);

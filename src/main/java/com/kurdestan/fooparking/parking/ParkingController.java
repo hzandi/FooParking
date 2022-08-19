@@ -1,5 +1,6 @@
 package com.kurdestan.fooparking.parking;
 
+import com.kurdestan.fooparking.bill.BillDTO;
 import com.kurdestan.fooparking.common.PagingData;
 import com.kurdestan.fooparking.common.SearchCriteria;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,12 @@ public class ParkingController {
     private final IParkingService service;
     private ParkingMapper mapper;
 
+    @PostMapping("/v1/exit/{plate}/{exitDatetime}")
+    public ResponseEntity<ParkingDTO> exitRequest(@PathVariable String plate, @PathVariable Long exitDatetime) {
+        Parking parking = service.exitRequest(plate, exitDatetime);
+        ParkingDTO parkingDTO = mapper.toParkingDTO(parking);
+        return ResponseEntity.ok(parkingDTO);
+    }
 
     @PostMapping("/v1")
     public ResponseEntity save(@RequestBody ParkingDTO parkingDTO){
