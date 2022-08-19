@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/emp_mg
+    url: jdbc:postgresql://localhost:5432/foo_parking_db
     username: postgres
     password: hzandi1989
 
