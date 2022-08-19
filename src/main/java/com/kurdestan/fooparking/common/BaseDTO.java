@@ -2,6 +2,7 @@ package com.kurdestan.fooparking.common;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
 import java.util.Date;
 
 

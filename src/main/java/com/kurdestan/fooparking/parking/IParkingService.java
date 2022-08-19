@@ -1,12 +1,8 @@
 package com.kurdestan.fooparking.parking;
 
 import com.kurdestan.fooparking.common.SearchCriteria;
-import com.kurdestan.fooparking.pricerate.PriceRate;
-import com.kurdestan.fooparking.vehicle.Vehicle;
-import com.kurdestan.fooparking.vehicle.VehicleType;
 import org.springframework.data.domain.Page;
 
-import javax.print.attribute.standard.PageRanges;
 import java.util.List;
 
 

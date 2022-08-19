@@ -2,6 +2,7 @@ package com.kurdestan.fooparking.pricerate;
 
 import com.kurdestan.fooparking.common.SearchCriteria;
 import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 

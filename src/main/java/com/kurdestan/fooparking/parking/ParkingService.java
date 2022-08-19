@@ -1,6 +1,7 @@
 package com.kurdestan.fooparking.parking;
 
 import com.kurdestan.fooparking.common.SearchCriteria;
+import com.kurdestan.fooparking.common.SearchSpecification;
 import com.kurdestan.fooparking.common.exception.NotFoundException;
 import com.kurdestan.fooparking.vehicle.Vehicle;
 import com.kurdestan.fooparking.vehicle.VehicleRepository;
@@ -31,8 +32,7 @@ public class ParkingService implements IParkingService {
 
         lastSavedParking.setEntranceDatetime(parking.getEntranceDatetime());
         lastSavedParking.setExitDatetime(parking.getExitDatetime());
-        lastSavedParking.setFee(parking.getFee());
-        lastSavedParking.setIsPayed(parking.getIsPayed());
+        lastSavedParking.setBill(parking.getBill());
         lastSavedParking.setVehicle(parking.getVehicle());
         lastSavedParking.setPriceRate(parking.getPriceRate());
 
@@ -76,7 +76,7 @@ public class ParkingService implements IParkingService {
 
     @Override
     public List<Parking> search(List<SearchCriteria> searchCriteria) {
-        ParkingSpecification parkingSpecification = new ParkingSpecification();
+        SearchSpecification<Parking> parkingSpecification = new SearchSpecification<>();
         searchCriteria.forEach(parkingSpecification::add);
         return repository.findAll(parkingSpecification);
     }

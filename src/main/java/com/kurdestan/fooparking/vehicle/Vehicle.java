@@ -3,6 +3,7 @@ package com.kurdestan.fooparking.vehicle;
 import com.kurdestan.fooparking.common.BaseEntity;
 import com.kurdestan.fooparking.parking.Parking;
 import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;

@@ -1,6 +1,7 @@
 package com.kurdestan.fooparking.pricerate;
 
 import com.kurdestan.fooparking.common.SearchCriteria;
+import com.kurdestan.fooparking.common.SearchSpecification;
 import com.kurdestan.fooparking.common.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -69,7 +70,7 @@ public class PriceRateService implements IPriceRateService {
 
     @Override
     public List<PriceRate> search(List<SearchCriteria> searchCriteria) {
-        PriceRateSpecification priceRateSpecification = new PriceRateSpecification();
+        SearchSpecification<PriceRate> priceRateSpecification = new SearchSpecification<>();
         searchCriteria.forEach(criteria -> priceRateSpecification.add(criteria));
         return repository.findAll(priceRateSpecification);
     }

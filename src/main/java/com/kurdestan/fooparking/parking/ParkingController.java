@@ -34,7 +34,7 @@ public class ParkingController {
     }
 
     @GetMapping("/v1/{id}")
-    public ResponseEntity<ParkingDTO> getVehicle(@PathVariable Long id) {
+    public ResponseEntity<ParkingDTO> getParking(@PathVariable Long id) {
         Parking parking = service.getById(id);
         ParkingDTO parkingDTO = mapper.toParkingDTO(parking);
         return ResponseEntity.ok(parkingDTO);

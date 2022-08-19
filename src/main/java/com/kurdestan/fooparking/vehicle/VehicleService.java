@@ -1,6 +1,7 @@
 package com.kurdestan.fooparking.vehicle;
 
 import com.kurdestan.fooparking.common.SearchCriteria;
+import com.kurdestan.fooparking.common.SearchSpecification;
 import com.kurdestan.fooparking.common.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -69,7 +70,7 @@ public class VehicleService implements IVehicleService {
 
     @Override
     public List<Vehicle> search(List<SearchCriteria> searchCriteria) {
-        VehicleSpecification vehicleSpecification = new VehicleSpecification();
+        SearchSpecification<Vehicle> vehicleSpecification = new SearchSpecification<>();
         searchCriteria.forEach(criteria -> vehicleSpecification.add(criteria));
         return repository.findAll(vehicleSpecification);
     }

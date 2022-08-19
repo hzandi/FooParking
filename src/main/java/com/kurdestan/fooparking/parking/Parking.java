@@ -1,5 +1,6 @@
 package com.kurdestan.fooparking.parking;
 
+import com.kurdestan.fooparking.bill.Bill;
 import com.kurdestan.fooparking.common.BaseEntity;
 import com.kurdestan.fooparking.pricerate.PriceRate;
 import com.kurdestan.fooparking.vehicle.Vehicle;
@@ -16,7 +17,6 @@ import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 @Entity
 @Table(name = "tbl_parking")
 @Data
-@Audited
 public class Parking extends BaseEntity {
 
     @NotNull
@@ -28,19 +28,17 @@ public class Parking extends BaseEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
     private Date exitDatetime;
 
-    @Column(name = "fee")
-    private Double fee;
-
-    @Column(name = "is_payed")
-    private Boolean isPayed;
+    @OneToOne
+    @JoinColumn(name = "bill_id")
+    private Bill bill;
 
     @NotNull
     @ManyToOne
-    @Audited(targetAuditMode = NOT_AUDITED)
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
     @NotNull
+    @Audited(targetAuditMode = NOT_AUDITED)
     @ManyToOne
     @JoinColumn(name = "price_rate_id")
     private PriceRate priceRate;

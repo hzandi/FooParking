@@ -1,6 +1,7 @@
 package com.kurdestan.fooparking.pricerate;
 
 import org.mapstruct.Mapper;
+
 import java.util.List;
 
 

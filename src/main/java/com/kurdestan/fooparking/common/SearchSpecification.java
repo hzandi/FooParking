@@ -1,8 +1,7 @@
-package com.kurdestan.fooparking.parking;
+package com.kurdestan.fooparking.common;
 
-import com.kurdestan.fooparking.common.SearchCriteria;
-import com.kurdestan.fooparking.common.SearchOperation;
 import org.springframework.data.jpa.domain.Specification;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -11,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ParkingSpecification implements Specification<Parking> {
-    private List<SearchCriteria> list;
+public class SearchSpecification <T extends BaseEntity> implements Specification<T> {
+    private final List<SearchCriteria> list;
 
-    public ParkingSpecification() {
+    public SearchSpecification() {
         this.list = new ArrayList<>();
     }
 
@@ -23,7 +22,7 @@ public class ParkingSpecification implements Specification<Parking> {
     }
 
     @Override
-    public Predicate toPredicate(Root<Parking> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+    public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
 
         //create a new predicate list
         List<Predicate> predicates = new ArrayList<>();

@@ -62,7 +62,7 @@ public class VehicleController {
     }
 
     @GetMapping("/v1/paging/{page}/{size}")
-    public ResponseEntity<PagingData<VehicleDTO>> filterByType(@PathVariable Integer page, Integer size) {
+    public ResponseEntity<PagingData<VehicleDTO>> filterByType(@PathVariable Integer page, @PathVariable Integer size) {
 
         Page<Vehicle> vehiclePage = service.paging(page, size);
 

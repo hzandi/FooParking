@@ -2,12 +2,12 @@ package com.kurdestan.fooparking.pricerate;
 
 import com.kurdestan.fooparking.common.PagingData;
 import com.kurdestan.fooparking.common.SearchCriteria;
-import com.kurdestan.fooparking.vehicle.*;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -63,7 +63,7 @@ public class PriceRateController {
     }
 
     @GetMapping("/v1/paging/{page}/{size}")
-    public ResponseEntity<PagingData<PriceRateDTO>> filterByType(@PathVariable Integer page, Integer size) {
+    public ResponseEntity<PagingData<PriceRateDTO>> filterByType(@PathVariable Integer page, @PathVariable Integer size) {
 
         Page<PriceRate> priceRatePage = service.paging(page, size);
 
