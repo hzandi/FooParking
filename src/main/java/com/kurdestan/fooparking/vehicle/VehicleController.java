@@ -64,10 +64,10 @@ public class VehicleController {
     @GetMapping("/v1/paging/{page}/{size}")
     public ResponseEntity<PagingData<VehicleDTO>> filterByType(@PathVariable Integer page, Integer size) {
 
-        Page<Vehicle> employeePage = service.paging(page, size);
+        Page<Vehicle> vehiclePage = service.paging(page, size);
 
-        int totalPage = employeePage.getTotalPages();
-        List<Vehicle> data = employeePage.getContent();
+        int totalPage = vehiclePage.getTotalPages();
+        List<Vehicle> data = vehiclePage.getContent();
         List<VehicleDTO> vehicleDTOS = mapper.toVehicleDTOList(data);
 
         PagingData<VehicleDTO> pagingData = new PagingData<>(totalPage, page, vehicleDTOS);
@@ -76,9 +76,9 @@ public class VehicleController {
 
     @PostMapping("/v1/search")
     public ResponseEntity<List<VehicleDTO>> search(@RequestBody List<SearchCriteria> searchCriteria) {
-        List<Vehicle> employeeList = service.search(searchCriteria);
-        List<VehicleDTO> employeeDTOS = mapper.toVehicleDTOList(employeeList);
-        return ResponseEntity.ok(employeeDTOS);
+        List<Vehicle> vehicles = service.search(searchCriteria);
+        List<VehicleDTO> vehicleDTOS = mapper.toVehicleDTOList(vehicles);
+        return ResponseEntity.ok(vehicleDTOS);
     }
 
 }
