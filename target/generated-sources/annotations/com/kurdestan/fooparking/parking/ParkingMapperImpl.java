@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-08-20T00:25:52+0430",
+    date = "2022-08-20T17:38:17+0430",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.4.1 (Oracle Corporation)"
 )
 @Component
@@ -29,8 +29,6 @@ public class ParkingMapperImpl implements ParkingMapper {
         parking.setCreatedBy( parkingDTO.getCreatedBy() );
         parking.setLastModifiedDate( parkingDTO.getLastModifiedDate() );
         parking.setLastModifiedBy( parkingDTO.getLastModifiedBy() );
-        parking.setFee( parkingDTO.getFee() );
-        parking.setIsPayed( parkingDTO.getIsPayed() );
 
         return parking;
     }
@@ -51,8 +49,6 @@ public class ParkingMapperImpl implements ParkingMapper {
         parkingDTO.setCreatedBy( parking.getCreatedBy() );
         parkingDTO.setLastModifiedDate( parking.getLastModifiedDate() );
         parkingDTO.setLastModifiedBy( parking.getLastModifiedBy() );
-        parkingDTO.setFee( parking.getFee() );
-        parkingDTO.setIsPayed( parking.getIsPayed() );
 
         return parkingDTO;
     }

@@ -3,7 +3,6 @@ package com.kurdestan.fooparking.bill;
 import com.kurdestan.fooparking.common.BaseEntity;
 import com.kurdestan.fooparking.parking.Parking;
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity

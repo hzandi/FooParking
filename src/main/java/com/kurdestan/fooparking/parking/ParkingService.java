@@ -7,6 +7,9 @@ import com.kurdestan.fooparking.common.exception.NotFoundException;
 import com.kurdestan.fooparking.vehicle.Vehicle;
 import com.kurdestan.fooparking.vehicle.VehicleRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -55,11 +58,19 @@ public class ParkingService implements IParkingService {
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "parkingOne", allEntries = true),
+            @CacheEvict(value = "parkingTwo", allEntries = true)
+    })
     public Parking save(Parking parking) {
         return repository.save(parking);
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "parkingOne", allEntries = true),
+            @CacheEvict(value = "parkingTwo", allEntries = true)
+    })
     public Parking update(Parking parking) {
         Parking lastSavedParking = getById(parking.getId());
 
@@ -73,16 +84,25 @@ public class ParkingService implements IParkingService {
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "parkingOne", allEntries = true),
+            @CacheEvict(value = "parkingTwo", allEntries = true)
+    })
     public void delete(Parking parking) {
         repository.deleteById(parking.getId());
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "parkingOne", allEntries = true),
+            @CacheEvict(value = "parkingTwo", allEntries = true)
+    })
     public void delete(Long id) {
         repository.deleteById(id);
     }
 
     @Override
+    @Cacheable(value = "parkingTwo",key = "#id")
     public Parking getById(Long id) {
         Optional<Parking> optionalParking = repository.findById(id);
         if (!optionalParking.isPresent()) {
@@ -92,22 +112,26 @@ public class ParkingService implements IParkingService {
     }
 
     @Override
+    @Cacheable(value = "parkingOne")
     public List<Parking> getAll() {
         return (List<Parking>) repository.findAll();
     }
 
     @Override
+    @Cacheable(value = "parkingTwo",key = "#plate")
     public List<Parking> getByPlate(String plate) {
         Vehicle vehicle = vehicleRepository.findByPlate(plate);
         return repository.findByVehicle(vehicle);
     }
 
     @Override
+    @Cacheable(value = "parkingOne")
     public Page<Parking> paging(Integer page, Integer size) {
         return repository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
     }
 
     @Override
+    @Cacheable(value = "parkingOne")
     public List<Parking> search(List<SearchCriteria> searchCriteria) {
         SearchSpecification<Parking> parkingSpecification = new SearchSpecification<>();
         searchCriteria.forEach(parkingSpecification::add);
